@@ -39,4 +39,4 @@ Usage: Enter 0100, then the register number containing the first number, then th
 ```0110 followed by 0000 followed by 0001 means divide registers 0000 and 0001```  
 
 ## Example:
-* [Example algorithm](Example.md)
+* [Example algorithm](Example.md) (Example.md)
