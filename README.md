@@ -5,7 +5,8 @@ It takes instructions and executes them.
 
 0000  
 Function: Sets memory values.  
-Usage: Enter 0000, followed by the binary data followed by the binary address of the desired memory cell.
+Usage: Enter 0000, followed by the binary data followed by the binary address of the desired memory cell.  
+```0001 followed by 0000 followed by 0000 means load from address 0000 in memory to register 0000```
 
 0001  
 Function: Loads a value from memory to a register.  
