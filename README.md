@@ -3,7 +3,7 @@ It takes instructions and executes them.
 
 ## Guide:
 
-0000  
+## 0000  
 Function: Sets memory values.  
 Usage: Enter 0000, followed by the binary data followed by the binary address of the desired memory cell.
 
