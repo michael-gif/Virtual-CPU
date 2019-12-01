@@ -10,6 +10,7 @@ app.geometry('1365x525')
 app.configure(background='gray25')
 app.iconbitmap(r'cpuicon.ico')
 app.resizable(0,0)
+
 def updateregisters():
     registervalue1.set("0: " + str(registers[0]))
     registervalue2.set("1: " + str(registers[1]))
@@ -25,16 +26,19 @@ def updateregisters():
     memoryvalue6.set("5: " + str(memory[5]))
     memoryvalue7.set("6: " + str(memory[6]))
     memoryvalue8.set("7: " + str(memory[7]))
+
 def clearsequence():
     global instructions, instructioncount
     listbox1.delete(0,'end')
     instructions = []
     instructioncount = 0
+
 def clearprevious():
     global instructions, instructioncount
     listbox1.delete('end')
     instructioncount -= 1
     instructions.pop(len(instructions)-1)
+
 def decodebinary(value):
     total = 0
     if value[0] == "1":
@@ -46,6 +50,7 @@ def decodebinary(value):
     if value[3] == "1":
         total += 1
     return total
+
 def changelabelvalue():
     global instructions, instructioncount
     change = entryvalue.get()
@@ -66,6 +71,7 @@ def changelabelvalue():
             instructions.append(change)
     else:
         print("Error:entry type invalid")
+
 def startprogram():
     global registers, memory, accumulator
     x = 0
@@ -138,6 +144,7 @@ def startprogram():
         else:
             print("Error:entry invalid")
             x = len(instructions)
+
 #sequence box
 labeltext = tk.StringVar(app)
 labeltext.set("")
@@ -145,10 +152,12 @@ label1=tk.Label(app,bg='black',fg='white',textvariable=labeltext,anchor='nw').pl
 listbox1 = tk.Listbox(app,bg="black",fg="white")
 listbox1.place(x=10,y=30,width=150,height=250)
 listbox1.yview()
+
 #program counter box
 listbox2 = tk.Listbox(app,bg="black",fg="white")
 listbox2.place(x=170,y=30,width=150,height=250)
 listbox2.yview()
+
 #register boxes
 registervalue1 = tk.StringVar(app)
 registervalue2 = tk.StringVar(app)
@@ -162,6 +171,7 @@ registerlabel3 = tk.Label(app,bg="black",fg='white',textvariable=registervalue3,
 registerlabel4 = tk.Label(app,bg="black",fg='white',textvariable=registervalue4,anchor='w').place(x=330,y=120,width=100)
 registerlabel5 = tk.Label(app,bg="black",fg='white',textvariable=registervalue5,anchor='w').place(x=330,y=150,width=100)
 registerlabel6 = tk.Label(app,bg="black",fg='white',textvariable=registervalue6,anchor='w').place(x=330,y=180,width=100)
+
 #memory boxes
 memoryvalue1 = tk.StringVar(app)
 memoryvalue2 = tk.StringVar(app)
@@ -179,9 +189,11 @@ memorylabel5 = tk.Label(app,bg="black",fg='white',textvariable=memoryvalue5,anch
 memorylabel6 = tk.Label(app,bg="black",fg='white',textvariable=memoryvalue6,anchor='w').place(x=440,y=180,width=100)
 memorylabel7 = tk.Label(app,bg="black",fg='white',textvariable=memoryvalue7,anchor='w').place(x=440,y=210,width=100)
 memorylabel8 = tk.Label(app,bg="black",fg='white',textvariable=memoryvalue8,anchor='w').place(x=440,y=240,width=100)
+
 #ALU box
 accumulatorvalue = tk.StringVar(app)
 accumulatorlabel = tk.Label(app,bg="black",fg='white',textvariable=accumulatorvalue).place(x=550,y=30,width=100)
+
 #titles
 tk.Label(app,text="Sequence:",bg='grey25',fg='snow').place(x=10,y=5)
 tk.Label(app,text="Instruction:",bg='grey25',fg='snow').place(x=10,y=285)
@@ -190,6 +202,7 @@ tk.Label(app,text="Register Values:",bg='grey25',fg='snow').place(x=330,y=5)
 tk.Label(app,text="Memory Values:",bg='grey25',fg='snow').place(x=440,y=5)
 tk.Label(app,text="ALU Output:",bg='grey25',fg='snow').place(x=550,y=5)
 
+#Guide text
 tk.Label(app,text="Guide:",bg='grey25',fg='snow').place(x=660,y=5)
 
 tk.Label(app,text="0000",bg='grey25',fg='snow').place(x=660,y=25)
@@ -223,11 +236,14 @@ tk.Label(app,text="Usage: Enter 0110, then the register number containing the fi
 #instruction input box
 entryvalue = tk.StringVar(app)
 entry1 = tk.Entry(app,textvariable=entryvalue).place(x=75,y=285,width=85)
+
 #buttons
 button = tk.Button(app,text="Add Instruction",bg='grey40',command=changelabelvalue).place(x=10,y=310,width=150)
 button2 = tk.Button(app,text="Run Program",bg='grey40',command=startprogram).place(x=170,y=310,width=150)
 button3 = tk.Button(app,text="Clear Sequence",bg='grey40',command=clearsequence).place(x=10,y=340,width = 150)
 button3 = tk.Button(app,text="Clear Previous",bg='grey40',command=clearprevious).place(x=10,y=370,width = 150)
+
 #set intial register and memory values
 updateregisters()
+
 tk.mainloop()
